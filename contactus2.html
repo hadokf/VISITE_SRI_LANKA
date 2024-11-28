@@ -116,7 +116,7 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         // Initialize EmailJS
-        emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+        emailjs.init("37iHS3-38-4htvcyO"); // Replace with your EmailJS user ID
 
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent the form from refreshing the page
@@ -124,7 +124,7 @@
             const statusMessage = document.getElementById("statusMessage");
             statusMessage.textContent = "Sending your message...";
 
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            emailjs.sendForm('service_eigu3md', 'template_ewxzeqe', this)
                 .then(function() {
                     statusMessage.textContent = "Message sent successfully!";
                 }, function(error) {
