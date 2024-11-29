@@ -87,7 +87,8 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="location.html">Activities</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
     </header>
@@ -97,10 +98,10 @@
 
         <form id="contactForm">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="from_name" required>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="reply_to" required>
 
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="5" required></textarea>
@@ -116,7 +117,7 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         // Initialize EmailJS
-        emailjs.init("37iHS3-38-4htvcyO"); // Replace with your EmailJS user ID
+        emailjs.init("37iHS3-38-4htvcyO"); // Replace with your EmailJS User ID
 
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent the form from refreshing the page
@@ -124,7 +125,7 @@
             const statusMessage = document.getElementById("statusMessage");
             statusMessage.textContent = "Sending your message...";
 
-            emailjs.sendForm('service_eigu3md', 'template_czuptcp', this)
+            emailjs.sendForm('service_eigu3md', 'template_2hgs52m', this)
                 .then(function() {
                     statusMessage.textContent = "Message sent successfully!";
                 }, function(error) {
