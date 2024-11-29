@@ -61,11 +61,14 @@
       text-align: center;
     }
 
-    /* Navigation Styles */
+    /* Modern Navigation Bar Styles */
     nav {
-      background-color: #1e3c72; /* Solid background for navigation */
-      padding: 10px 0;
-      text-align: center;
+      position: sticky;
+      top: 0;
+      background-color: #1e3c72; /* Deep blue background */
+      padding: 15px 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     }
 
     nav ul {
@@ -74,10 +77,11 @@
       padding: 0;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
     nav ul li {
-      margin: 0 20px;
+      margin: 0 25px;
     }
 
     nav ul li a {
@@ -85,10 +89,12 @@
       text-decoration: none;
       font-weight: bold;
       font-size: 18px;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     nav ul li a:hover {
-      text-decoration: underline;
+      color: #ffcc00; /* Highlight color on hover */
+      transform: translateY(-3px); /* Slightly lift the text on hover */
     }
 
     /* Destinations Section */
@@ -210,7 +216,7 @@
     <p>Discover breathtaking landscapes, ancient heritage, and tropical paradise.</p>
   </header>
 
-  <!-- Navigation Bar Below Hero Section -->
+  <!-- Modern Navigation Bar Below Hero Section -->
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -276,23 +282,26 @@
   </footer>
 
   <script>
-    let currentIndex = 0;
-    const images = document.querySelectorAll('.hero-images img');
-    const totalImages = images.length;
+  // Get all the images in the hero section
+  let currentIndex = 0;
+  const images = document.querySelectorAll('.hero-images img');
+  const totalImages = images.length;
 
-    function changeImage() {
-      // Remove the 'active' class from the current image
-      images[currentIndex].classList.remove('active');
+  // Function to change the active image
+  function changeImage() {
+    // Remove the 'active' class from the current image
+    images[currentIndex].classList.remove('active');
 
-      // Increment the index and reset if we reach the last image
-      currentIndex = (currentIndex + 1) % totalImages;
+    // Increment the index and reset if we reach the last image
+    currentIndex = (currentIndex + 1) % totalImages;
 
-      // Add the 'active' class to the next image
-      images[currentIndex].classList.add('active');
-    }
+    // Add the 'active' class to the next image
+    images[currentIndex].classList.add('active');
+  }
 
-    setInterval(changeImage, 5000); // Change image every 5 seconds
-  </script>
+  // Set the interval for the image slider (every 4 seconds)
+  setInterval(changeImage, 4000);
 
-</body>
-</html>
+  // Set the first image as active
+  images[currentIndex].classList.add('active');
+</script>
