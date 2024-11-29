@@ -16,27 +16,68 @@
 
     /* Header Section */
     header {
-      background: linear-gradient(to bottom, #1e3c72, #2a5298);
-      color: white;
-      padding: 20px;
-      text-align: center;
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .hero-images {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-images img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 2s ease-in-out; /* Smooth fade transition */
+      position: absolute;
+    }
+
+    .hero-images img.active {
+      opacity: 1; /* Only the active image will be visible */
     }
 
     header h1 {
-      font-size: 36px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 3.5em;
       margin: 0;
+      text-align: center;
+    }
+
+    header p {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1.2em;
+      text-align: center;
+    }
+
+    /* Navigation Styles */
+    nav {
+      background-color: #1e3c72; /* Solid background for navigation */
+      padding: 10px 0;
+      text-align: center;
     }
 
     nav ul {
       list-style: none;
-      margin: 10px 0 0;
+      margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
     }
 
     nav ul li {
-      margin: 0 15px;
+      margin: 0 20px;
     }
 
     nav ul li a {
@@ -48,27 +89,6 @@
 
     nav ul li a:hover {
       text-decoration: underline;
-    }
-
-    /* Hero Section */
-    #hero {
-      background: url('path-to-hero-image.jpg') no-repeat center center/cover;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
-    }
-
-    #hero h2 {
-      font-size: 48px;
-      margin: 0;
-    }
-
-    #hero p {
-      font-size: 20px;
-      margin: 10px 0 0;
     }
 
     /* Destinations Section */
@@ -141,29 +161,64 @@
     footer p {
       margin: 0;
     }
+
+    /* Media Queries for Mobile Devices */
+    @media (max-width: 768px) {
+      header {
+        height: 300px; /* Reduce header height on tablets */
+      }
+      header h1 {
+        font-size: 2.5em; /* Adjust font size for title on tablets */
+      }
+      header p {
+        font-size: 1em; /* Adjust font size for description on tablets */
+        top: 70%; /* Adjust vertical positioning for description */
+      }
+      section {
+        padding: 40px 15px; /* Reduce padding on sections for better mobile view */
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        height: 250px; /* Further reduce header height on phones */
+      }
+      header h1 {
+        font-size: 2em; /* Smaller title for phones */
+      }
+      header p {
+        font-size: 0.9em; /* Smaller description font for phones */
+        top: 75%; /* Adjust positioning for smaller screens */
+      }
+      section {
+        padding: 30px 10px; /* Further reduce section padding on phones */
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header with Hero Section -->
   <header>
+    <div class="hero-images">
+      <img src="img/1732345965212.jpg" alt="Sigiriya Image 1" class="active">
+      <img src="img/1732346114887.jpg" alt="Sigiriya Image 2">
+      <img src="img/1732346130050.jpg" alt="Sigiriya Image 3">
+      <img src="img/1732345982391.jpg" alt="Sigiriya Image 4">
+    </div>
     <h1>Explore Sri Lanka</h1>
-    <nav>
-      <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#destinations">Destinations</a></li>
-        <li><a href="contactus2.html">Contact</a></li>
-      </ul>
-    </nav>
+    <p>Discover breathtaking landscapes, ancient heritage, and tropical paradise.</p>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <div>
-      <h2>Discover the Beauty of Sri Lanka</h2>
-      <p>Explore breathtaking landscapes, ancient heritage, and tropical paradise.</p>
-    </div>
-  </section>
+  <!-- Navigation Bar Below Hero Section -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contactus2.html">Contact Us</a></li>
+    </ul>
+  </nav>
 
   <!-- Destinations Section -->
   <section id="destinations">
@@ -202,24 +257,42 @@
         </div>
       </a>
 
-      <!-- New Card (Location) -->
+      <!-- New Card for Visit Location -->
       <a href="location.html" class="card">
         <div>
-          <img src="img/Your_Image.jpg" alt="New Location">
+          <img src="img/location-image.jpg" alt="Visit Location">
           <div class="card-content">
-            <h3>New Location</h3>
-            <p>Amazing description of this location.</p>
+            <h3>Visit Location</h3>
+            <p>Explore hidden gems and off-the-beaten-path destinations in Sri Lanka.</p>
           </div>
         </div>
       </a>
     </div>
   </section>
-  <h4>BY THARUSHA ashwan testing run</h4>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2024 Explore Sri Lanka. All Rights Reserved.</p>
   </footer>
+
+  <script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.hero-images img');
+    const totalImages = images.length;
+
+    function changeImage() {
+      // Remove the 'active' class from the current image
+      images[currentIndex].classList.remove('active');
+
+      // Increment the index and reset if we reach the last image
+      currentIndex = (currentIndex + 1) % totalImages;
+
+      // Add the 'active' class to the next image
+      images[currentIndex].classList.add('active');
+    }
+
+    setInterval(changeImage, 5000); // Change image every 5 seconds
+  </script>
 
 </body>
 </html>
