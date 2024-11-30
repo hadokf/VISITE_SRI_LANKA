@@ -24,28 +24,30 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      padding: 20px;
+    }
+
+    header .logo {
+      font-size: 1.8em; /* Adjust logo size */
+      font-weight: bold;
+      margin-bottom: 20px; /* Space between logo and nav */
     }
 
     header h1 {
-      font-size: 3.5em;
+      font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
       margin: 0;
     }
 
     header p {
-      font-size: 1.2em;
+      font-size: clamp(1rem, 2.5vw, 1.5rem); /* Responsive font size */
     }
 
-    /* Navbar Styles */
+    /* Navbar Styles Inside Header */
     nav {
-      background: linear-gradient(to right, #f39c12, #d35400);
-      color: white;
-      padding: 15px 20px;
+      width: 100%; /* Full width of the header */
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      justify-content: center;
+      margin-top: 20px; /* Space between header content and navbar */
     }
 
     nav ul {
@@ -53,34 +55,44 @@
       margin: 0;
       padding: 0;
       display: flex;
+      gap: 15px;
     }
 
     nav ul li {
-      margin: 0 15px;
+      margin: 0;
     }
 
-    nav ul li a {
+    nav ul li button {
+      background: #f39c12;
       color: white;
-      text-decoration: none;
+      border: 2px solid #d35400;
+      border-radius: 5px;
+      padding: 10px 15px;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 16px;
       text-transform: uppercase;
-      transition: color 0.3s ease, transform 0.3s ease, letter-spacing 0.3s ease;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
     }
 
-    nav ul li a:hover {
-      color: #ff9800;
+    nav ul li button:hover {
+      background: #d35400;
+      color: #ffffff;
       transform: translateY(-3px);
-      letter-spacing: 1px;
     }
 
+    nav ul li button:active {
+      transform: translateY(1px);
+    }
+
+    /* Destinations Section */
     #destinations {
       padding: 40px;
     }
 
     #destinations h2 {
       text-align: center;
-      font-size: 36px;
+      font-size: clamp(2rem, 4vw, 3rem); /* Responsive font size */
       margin-bottom: 20px;
       color: #1e3c72;
     }
@@ -144,6 +156,7 @@
       margin: 0;
     }
 
+    /* Responsive Adjustments */
     @media (max-width: 768px) {
       header {
         height: 40vh;
@@ -154,37 +167,57 @@
       }
 
       header p {
-        font-size: 1em;
+        font-size: 1.2em;
       }
 
-      nav ul li a {
-        font-size: 16px;
+      nav ul li button {
+        font-size: 14px; /* Slightly smaller button size */
+        padding: 8px 12px;
       }
 
       #destinations {
         padding: 20px;
+      }
+
+      .cards {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* More flexible card layout */
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav ul li button {
+        font-size: 14px;
+        padding: 8px 12px; /* Adjust for small screens */
+      }
+
+      header h1 {
+        font-size: 2rem; /* Smaller heading */
+      }
+
+      header p {
+        font-size: 1rem; /* Smaller text */
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header with Hero Section -->
+  <!-- Header with Hero Section and Navbar -->
   <header>
+    <div class="logo">Visit Sri Lanka</div>
     <h1>Explore Sri Lanka</h1>
     <p>Discover breathtaking landscapes, ancient heritage, and tropical paradise.</p>
-  </header>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <div class="logo">Visit Sri Lanka</div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="destination.html">Destinations</a></li>
-      <li><a href="aboutus.html">About Us</a></li>
-      <li><a href="Contact.html">Contact Us</a></li>
-    </ul>
-  </nav>
+    <!-- Navigation Bar Inside Header -->
+    <nav>
+      <ul>
+        <li><button onclick="location.href='index.html'">Home</button></li>
+        <li><button onclick="location.href='destination.html'">Destinations</button></li>
+        <li><button onclick="location.href='aboutus.html'">About Us</button></li>
+        <li><button onclick="location.href='Contact.html'">Contact Us</button></li>
+      </ul>
+    </nav>
+  </header>
 
   <!-- Destinations Section -->
   <section id="destinations">
